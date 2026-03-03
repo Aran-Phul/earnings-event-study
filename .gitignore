@@ -1,4 +1,19 @@
-;
+# Virtual env + secrets
 .venv/
 .env
+.env.*
+
+# Data (raw API pulls can be big + can include noisy snapshots)
 data/raw/
+
+# Python cache / compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# OS / editor junk
+.DS_Store
+.vscode/
+
+# Processed data sets
+data/processed/
