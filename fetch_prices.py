@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import os
 # - requests
 import requests
+import pandas as pd
 
 print(load_dotenv())
 api_key = os.getenv("FMP_API_KEY")
@@ -25,7 +26,7 @@ print(url)
 
 # TODO: build params dict with symbol + apikey
 params = {"symbol": symbol, "apikey": api_key}
-print(params)
+
 
 # TODO: make request (include a timeout)
 r = requests.get(url, params=params, timeout=30)
@@ -39,10 +40,19 @@ r.raise_for_status()
 
 # TODO: parse JSON and print the “shape”
 data = r.json()
+print("len:", len(data))
+print("first item type:", type(data[0]))
+print("first item keys:", data[0].keys() if isinstance(data[0], dict) else "not a dict")
+print("first item:", data[0])
 print(type(data))
 
+df = pd.DataFrame(data)
+cols = ["symbol","date","open","high","low","close","volume","vwap","change","changePercent"]
+df["date"] = pd.to_datetime(df["date"])
+df = df.sort_values("date", ascending=False).reset_index(drop=True)
+df.to_csv("data/processed/aapl_prices.csv", index=False)
 # HINT: if it's a dict, print the keys:
-if isinstance(data, dict)
-print(data.keys())
+if isinstance(data, dict):
+    print(data.keys())
 
 
