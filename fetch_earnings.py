@@ -39,5 +39,11 @@ print("first item keys:", data[0].keys() if isinstance(data[0], dict) else "not 
 print("first item:", data[0])
 print(type(data))
 
-
+df = pd.DataFrame(data)
+cols = ["symbol","date","epsActual","epsEstimated","revenueActual", "revenueEstimated", "lastUpdated"]
+df = df[cols]
+df["date"] = pd.to_datetime(df["date"])
+df = df.sort_values("date", ascending=False).reset_index(drop=True)
+df.to_csv("data/processed/aapl_earnings.csv", index=False)
+print("Saved: data/processed/aapl_earnings.csv")
 
