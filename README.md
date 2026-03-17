@@ -120,10 +120,10 @@ Two return measures were used:
 ## Dashboard Preview
 
 ### Overview Page
-![Overview Dashboard](images/overview.png)
+![Overview Dashboard](images/Overview.png)
 
 ### Methodology Page
-![Methodology Page](images/methodology.png)
+![Methodology Page](images/Methodology.png)
 
 ## Repository Structure
 
@@ -175,6 +175,10 @@ Possible next steps include:
 - comparing multiple companies instead of only Apple
 - adding sector or market benchmark comparisons
 - building reusable Power BI templates for future event-study projects
+
+## Notes
+
+The path of processed and raw datasets are generated locally and are intentionally ignored.
 
 ## Author
 

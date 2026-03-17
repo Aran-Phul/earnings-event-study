@@ -1,12 +1,14 @@
 #! /usr/bin/bash
-export PGPASSWORD='Enter_Password_Here'
+export PGPASSWORD='REMOVED_PASSWORD'
 set -e
 
 PSQL="psql --username=postgres --dbname=earnings_event_study"
-$PSQL -c "TRUNCATE TABLE earnings, event_window, event_window_long, prices_daily RESTART IDENTITY CASCADE;"
+
 
 echo "Creating tables from schema..."
 $PSQL -f sql/01_schema.sql
+
+$PSQL -c "TRUNCATE TABLE earnings, event_window, event_window_long, prices_daily RESTART IDENTITY CASCADE;"
 
 echo "Loading earnings..."
 $PSQL -c "\copy earnings(symbol, earnings_date, eps_actual, eps_estimated, revenue_actual, revenue_estimated, last_updated) FROM 'data/processed/aapl_earnings.csv' WITH (FORMAT csv, HEADER true)"

@@ -32,6 +32,10 @@ params = {"symbol": symbol, "apikey": api_key}
 raw_path = Path("data") / "raw" / "aapl_prices_raw.json"
 raw_path.parent.mkdir(parents=True, exist_ok=True)
 
+processed_path = Path("data") / "processed"
+processed_path.parent.mkdir(parents=True, exist_ok=True)
+
+
 if raw_path.exists():
     with open(raw_path, "r", encoding="utf-8") as f: data = json.load(f)
 
