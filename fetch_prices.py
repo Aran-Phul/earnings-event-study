@@ -32,29 +32,27 @@ params = {"symbol": symbol, "apikey": api_key}
 raw_path = Path("data") / "raw" / "aapl_prices_raw.json"
 raw_path.parent.mkdir(parents=True, exist_ok=True)
 
-processed_path = Path("data") / "processed"
+processed_path = Path("data") / "processed" / "aapl_prices.csv"
 processed_path.parent.mkdir(parents=True, exist_ok=True)
 
 
-if raw_path.exists():
-    with open(raw_path, "r", encoding="utf-8") as f: data = json.load(f)
 
 # TODO: make request (include a timeout)
-else:
-    r = requests.get(url, params=params, timeout=30)
+
+r = requests.get(url, params=params, timeout=30)
 
 # TODO: print status code
-    if r.status_code != 200:
+if r.status_code != 200:
         print(r.text)
 
 # TODO: raise if bad response (so you see errors clearly)
-    r.raise_for_status()
+r.raise_for_status()
 
 # TODO: parse JSON and print the “shape”
-    data = r.json()
+data = r.json()
 
-    with open(raw_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2)
+with open(raw_path, "w", encoding="utf-8") as f:
+    json.dump(data, f, indent=2)
 print("len:", len(data))
 print("first item type:", type(data[0]))
 print("first item keys:", data[0].keys() if isinstance(data[0], dict) else "not a dict")

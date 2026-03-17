@@ -1,5 +1,5 @@
 #! /usr/bin/bash
-export PGPASSWORD='REMOVED_PASSWORD'
+export PGPASSWORD='Enter Password Here'
 set -e
 
 PSQL="psql --username=postgres --dbname=earnings_event_study"

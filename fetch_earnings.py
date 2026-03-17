@@ -20,21 +20,18 @@ params = {"symbol": symbol,"apikey": api_key}
 raw_path = Path("data") / "raw" / "aapl_earnings_raw.json"
 raw_path.parent.mkdir(parents=True, exist_ok=True)
 
-processed_path = Path("data") / "processed"
+processed_path = Path("data") / "processed" / "aapl_earnings.csv"
 processed_path.parent.mkdir(parents=True, exist_ok=True)
 
-if raw_path.exists():
-    with open(raw_path, "r", encoding="utf-8") as f: data = json.load(f)
 
-else:
-    r = requests.get(url, params=params, timeout=30)
-    if r.status_code != 200:
-        print(r.text)
-    r.raise_for_status()
-    data = r.json()
+r = requests.get(url, params=params, timeout=30)
+if r.status_code != 200:
+    print(r.text)
+r.raise_for_status()
+data = r.json()
 
-    with open(raw_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2)
+with open(raw_path, "w", encoding="utf-8") as f:
+    json.dump(data, f, indent=2)
 
 print("len:", len(data))
 print("first item type:", type(data[0]))
