@@ -165,7 +165,7 @@ earnings-event-study/
 
 ## Limitations
 
-This analysis uses only the **last 4 quarterly earnings events**, so the results should be interpreted as **A sample and not the full picture**.
+This analysis uses only the **last 4 quarterly earnings events**, so the results should be interpreted as **Sample specific and not conclusive**.
 
 ## Future Improvements
 
