@@ -180,6 +180,10 @@ Possible next steps include:
 
 The path of processed and raw datasets are generated locally and are intentionally ignored.
 
+## Project Status
+
+**Completed** — end-to-end portfolio project finished, including Python data preparation, PostgreSQL/SQL analysis, and Power BI dashboarding.
+
 ## Author
 
 **Aran-Phul**
